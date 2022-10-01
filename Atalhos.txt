@@ -1,0 +1,12 @@
+ctrl + alt + n   | executar codigo
+ctrl + /         | comentar
+shift + alt + a  | para comentar tipo um texto
+shift + tab      | volta a identação 
+alt + shift + ↧  | duplicar uma linha
+ctrl + x         | exclui linhas
+shift + alt + f  | arruma a identação 
+press alt + setas| mover uma linha de codigo
+alt  + z         | para ajusta uma pagina quando vc dividir tela
+ctrl + shift + l | para alterar uma variavel especifica que se repete
+ctrl + h         | procurar e substituir palavras chave 
+ctrl + alt + ↧   | clicando em uma linha consegui editar mais de uma linha 
