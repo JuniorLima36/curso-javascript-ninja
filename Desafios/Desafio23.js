@@ -21,3 +21,58 @@ multiplicação (x), então no input deve aparecer "1+2x".
 input;
 - Ao pressionar o botão "CE", o input deve ficar zerado.
 */
+const $display = document.getElementById('display');
+const $buttons = document.querySelectorAll('button');
+
+let expression = '';
+
+$buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    const buttonValue = button.textContent;
+    
+    if (button.dataset.js === 'num') {
+      handleNumber(buttonValue);
+    } else if (button.dataset.js === 'op') {
+      handleOperation(buttonValue);
+    } else if (button.dataset.js === 'equal') {
+      handleEqual();
+    } else if (button.dataset.js === 'clear') {
+      handleClear();
+    }
+  });
+});
+
+function handleNumber(value) {
+  if ($display.value === '0') {
+    $display.value = value;
+  } else {
+    $display.value += value;
+  }
+  expression += value;
+}
+
+function handleOperation(op) {
+  const lastChar = expression.slice(-1);
+  if (lastChar === '+' || lastChar === '-' || lastChar === 'x' || lastChar === '÷') {
+    expression = expression.slice(0, -1) + op;
+  } else {
+    expression += op;
+  }
+  $display.value = expression;
+}
+
+function handleEqual() {
+  try {
+    const result = eval(expression);
+    $display.value = result;
+    expression = result.toString(); 
+  } catch (error) {
+    $display.value = 'Erro';
+    expression = ''; 
+  }
+}
+
+function handleClear() {
+  $display.value = '0';
+  expression = '';
+}

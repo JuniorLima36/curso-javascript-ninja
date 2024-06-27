@@ -1,1 +1,0 @@
-Falta terminar alguns Exercicios

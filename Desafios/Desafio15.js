@@ -13,20 +13,33 @@
     - `lastName` - que receberá o valor do parâmetro `lastName`;
     - `age` - que receberá o valor do parâmetro `age`;
   - Deverá ter 3 métodos:
-    - `getFullName` - que deve retornar o nome completo do objeto criado,
+    - `getFullName()` - que deve retornar o nome completo do objeto criado,
     no formato:
       - "[NAME] [LASTNAME]"
-    - `getAge` - que deverá retornar a idade (age);
-    - `addAge` - esse método não deverá ter nenhum parâmetro, mas ao invocá-lo
+    - `getAge()` - que deverá retornar a idade (age);
+    - `addAge()` - esse método não deverá ter nenhum parâmetro, mas ao invocá-lo
     iremos passar um único argumento, que é a quantidade de anos que devem ser
     adicionados à idade original (age). Esse método deverá retornar o objeto
     que será instanciado.
   */
   
-  function Person(name, lastName, age){
-    'name': name,
-    'lastName': lastName,
-    'age': age
+  function Person(name, lastName, age) {
+    this.name = name;
+    this.lastName = lastName;
+    this.age = age;
+  
+    this.getFullName = function() {
+      return `${this.name} ${this.lastName}`;
+    };
+  
+    this.getAge = function() {
+      return this.age;
+    };
+  
+    this.addAge = function(years) {
+      this.age += years;
+      return this;
+    };
   }
 
   /*
@@ -35,13 +48,23 @@
   parâmetros corretamente para o construtor para criar as novas pessoas.
   Mostre as 3 novas pessoas criadas no console (Um console.log por pessoa).
   */
+  const ana = new Person('Ana', 'Pereira', 30);
+  const bruno = new Person('Bruno', 'Oliveira', 25);
+  const carla = new Person('Carla', 'Santos', 28);
+
   console.log( 'Novas pessoas criadas à partir de Person:' );
+  console.log(ana);
+  console.log(bruno);
+  console.log(carla);
   // ?
 
   /*
   Mostre no console o nome completo de cada pessoa.
   */
   console.log( '\nNomes das pessoas:' );
+  console.log(ana.getFullName());
+  console.log(bruno.getFullName());
+  console.log(carla.getFullName());
   // ?
 
   /*
@@ -49,6 +72,9 @@
   - "[NOME COMPLETO] tem [IDADE] anos."
   */
   console.log( '\nIdade das pessoas:' );
+  console.log(`${ana.getFullName()} tem ${ana.getAge()} anos.`);
+  console.log(`${bruno.getFullName()} tem ${bruno.getAge()} anos.`);
+  console.log(`${carla.getFullName()} tem ${carla.getAge()} anos.`);
   // ?
 
   /*
@@ -57,5 +83,11 @@
   - "[NOME COMPLETO] agora tem [NOVA IDADE] anos."
   */
   console.log( '\nNova idade das pessoas:' );
+  ana.addAge(5);
+  bruno.addAge(5);
+  carla.addAge(5);
+  console.log(`${ana.getFullName()} agora tem ${ana.getAge()}`);
+  console.log(`${bruno.getFullName()} agora tem ${bruno.getAge()}`);
+  console.log(`${carla.getFullName()} agora tem ${carla.getAge()}`);
   // ?
 })();
